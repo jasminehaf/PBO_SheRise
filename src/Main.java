@@ -34,12 +34,14 @@ public class Main {
                 scanner.nextLine();
 
                 if (roleChoice == 1) {
+                    int userChoice;
+                    do {
                     System.out.println("\nMenu (User):");
                     System.out.println("1. Login");
                     System.out.println("2. Sign Up");
                     System.out.println("3. Keluar");
                     System.out.print("Pilih opsi: ");
-                    int userChoice = scanner.nextInt();
+                    userChoice = scanner.nextInt();
                     scanner.nextLine();
 
                     switch (userChoice) {
@@ -56,10 +58,10 @@ public class Main {
                                     break;
                                 }
                             }
-                            if (loggedInUser == null) {
-                                System.out.println("Login gagal. Periksa email dan password Anda.");
-                            }
+                             if (loggedInUser != null) {
                             break;
+                        }
+                        break;
 
                         case 2:
                             System.out.print("Nama User: ");
@@ -70,39 +72,48 @@ public class Main {
                             String password = scanner.nextLine();
                             System.out.print("Nomor Telepon: ");
                             String phoneNumber = scanner.nextLine();
-                            User newUser = new User(username, email, password, phoneNumber, false);
+                            User newUser = new User(username, email, password, phoneNumber,false);
                             users.add(newUser);
                             System.out.println("User " + username + " telah ditambahkan.");
+                            loggedInUser = users.get(users.size() - 1);
+                            if (loggedInUser != null) {
+                            }
                             break;
 
                         case 3:
-                            System.out.println("Keluar dari program.");
-                            System.exit(0);
-                            break;
+                    System.out.println("Keluar dari program.");
+                    System.exit(0);
+                    break;
                             
-                        case 5: // Menampilkan daftar komunitas
+                        case 4: // Menampilkan daftar komunitas
                             System.out.println("Daftar Komunitas:");
                             for (ForumKomunitas komunitas : komunitasList) {
                             System.out.println(komunitas.getNamaKomunitas());
                             }
                             break;
                             
-                            case 6: // Menampilkan daftar konten edukasi
-    System.out.println("Daftar Konten Edukasi:");
-    for (KontenEdukasi konten : kontenList) {
-        System.out.println(konten.getJudulKonten());
-    }
-    break;
+                        case 5: // Menampilkan daftar konten edukasi
+                            System.out.println("Daftar Konten Edukasi:");
+                            for (KontenEdukasi konten : kontenList) {
+                            System.out.println(konten.getJudulKonten());
+                            }
+                            System.out.println("Logout berhasil.");
+                        loggedInUser = null;
+                        break;
     
-    case 7: // Menampilkan daftar lowongan pekerjaan
-    System.out.println("Daftar Lowongan Pekerjaan:");
-    for (LowonganPekerjaan lowongan : lowonganList) {
-        System.out.println(lowongan.getJudulLowongan());
-    }
-    break;
-                        default:
+                        case 6: 
+                            System.out.println("Daftar Lowongan Pekerjaan:");
+                            for (LowonganPekerjaan lowongan : lowonganList) {
+                            System.out.println(lowongan.getJudulLowongan());
+                            }
+                            break;
+                            default:
                             System.out.println("Opsi tidak valid.");
-                    }
+                            }
+                             System.out.println("Logout berhasil.");
+                            loggedInAdmin = null;
+            break;
+                } while (userChoice != 3);
                 } else if (roleChoice == 2) {
                     System.out.println("\nMenu (Admin):");
                     System.out.println("1. Login");
@@ -167,8 +178,8 @@ public class Main {
                 } else {
                     System.out.println("Opsi peran tidak valid.");
                 }
-            } else if (loggedInUser != null) {
-                System.out.println("\nMenu (User):");
+            } else if (loggedInAdmin != null) {
+                System.out.println("\nMenu (Admin):");
                 System.out.println("1. Logout");
                 System.out.println("2. Tambah Komunitas");
                 System.out.println("3. Tambah Konten Edukasi");
@@ -208,7 +219,6 @@ public class Main {
                 }
             } 
             
-    // Admin login
     System.out.println("\nMenu (Admin):");
     System.out.println("1. Login");
     System.out.println("2. Sign Up");
@@ -241,10 +251,10 @@ public class Main {
             }
             break;
         case 2:
-            // Implementasi sign up sebagai Admin
+            
             System.out.print("Masukkan email Admin: ");
             String newAdminEmail = scanner.nextLine();
-            // Periksa apakah email admin sudah ada
+            
             boolean adminExists = false;
             for (Admin admin : admins) {
                 if (admin.getEmail().equals(newAdminEmail)) {
@@ -272,7 +282,9 @@ public class Main {
             break;
         default:
             System.out.println("Opsi tidak valid.");
-        }
-        }
     }
 }
+
+
+            }
+        }
