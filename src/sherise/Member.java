@@ -2,57 +2,48 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package sherise;
 
 /**
  *
  * @author Lenovo
  */
+package sherise;
+        
+        
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
-    private String username;
-    private String email;
-    private String password;
-    private String phoneNumber;
-    private boolean isAdmin;
-    private boolean isLoggedIn;
-    private String status;
+public class Member extends User{
     private List<ForumKomunitas> komunitasDiikuti;
     private List<KontenEdukasi> kontenDiakses;
+    private boolean isLoggedIn; 
 
-    public User(String username, String email, String password, String phoneNumber, boolean isAdmin) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-        this.isAdmin = isAdmin;
-        this.isLoggedIn = false;
-        this.status = "Active";
-        this.komunitasDiikuti = new ArrayList<>();
-        this.kontenDiakses = new ArrayList<>();
-    }
+   public Member(String username, String email, String password, String phoneNumber, String status){
+       super(username, email, password, phoneNumber, status);
+       this.komunitasDiikuti = new ArrayList<>();
+       this.kontenDiakses = new ArrayList<>();
+   }
 
     public void registrasi() {
         // Implementasi untuk mendaftarkan pengguna baru.
-        System.out.println("Registrasi berhasil untuk " + username);
+        System.out.println("Registrasi berhasil untuk " + getUsername());
     }
 
-    public void login(String inputEmail, String inputPassword) {
-        if (inputEmail.equals(email) && inputPassword.equals(password)) {
-            isLoggedIn = true;
-            System.out.println("Login as " + username);
-        } else {
-            System.out.println("Login failed. Incorrect email or password.");
-        }
+    public void login() {
+    if (this.email.equals(this.getEmail()) && this.password.equals(this.getPassword())) {
+        this.setIsLoggedIn(true);
+        System.out.println("Login as " + this.getUsername());
+    } else {
+        System.out.println("Login failed. Incorrect email or password.");
     }
+}
 
-    public void editProfile(String newUsername, String newEmail, String newPhoneNumber, String newPassword) {
-        username = newUsername;
-        email = newEmail;
-        phoneNumber = newPhoneNumber;
-        password = newPassword;
+
+     public void editProfile(String newUsername, String newEmail, String newPhoneNumber, String newPassword) {
+        setUsername(newUsername);
+        setEmail(newEmail);
+        setPhoneNumber(newPhoneNumber);
+        setPassword(newPassword);
         System.out.println("Profile updated successfully.");
     }
 
@@ -76,38 +67,31 @@ public class User {
         System.out.println("Komentar Anda telah ditambahkan pada konten: " + konten.getJudulKonten());
     }
 
-    public String getUsername() {
-        return username;
+    public List<ForumKomunitas> getKomunitasDiikuti() {
+        return komunitasDiikuti;
     }
 
-    public String getEmail() {
-        return email;
+    public List<KontenEdukasi> getKontenDiakses() {
+        return kontenDiakses;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public boolean isLoggedIn() {
+    public boolean isIsLoggedIn() {
         return isLoggedIn;
     }
 
-    public String getPassword() {
-        return password;
+    public void setKomunitasDiikuti(List<ForumKomunitas> komunitasDiikuti) {
+        this.komunitasDiikuti = komunitasDiikuti;
     }
 
-    public String getStatus() {
-        return status;
+    public void setKontenDiakses(List<KontenEdukasi> kontenDiakses) {
+        this.kontenDiakses = kontenDiakses;
     }
 
-    public void setStatus(String newStatus) {
-        status = newStatus;
+    public void setIsLoggedIn(boolean isLoggedIn) {
+        this.isLoggedIn = isLoggedIn;
     }
 
+    
    
 
 class ForumKomunitas {

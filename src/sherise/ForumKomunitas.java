@@ -22,7 +22,7 @@ public class ForumKomunitas {
     private List<String> kontenKomunitas;
 
     // Konstruktor
-    public ForumKomunitas(String namaKomunitas) {
+    public ForumKomunitas(String namaKomunitas, String deskripsiKomunitas1, String kategoriKomunitas1, String username) {
         this.namaKomunitas = namaKomunitas;
         this.deskripsiKomunitas = deskripsiKomunitas;
         this.anggotaKomunitas = new ArrayList<>();
@@ -37,8 +37,7 @@ public class ForumKomunitas {
     this.deskripsiKomunitas = deskripsiKomunitas;
     this.kategoriKomunitas = kategoriKomunitas;
     this.pembuatKomunitas = pembuatKomunitas;
-    System.out.println("Komunitas " + namaKomunitas + " berhasil dibuat oleh " + pembuatKomunitas);
-    }
+    System.out.println("Komunitas " + namaKomunitas + " berhasil dibuat oleh " + pembuatKomunitas);}
 
     // Metode Menampilkan Isi Komunitas
     public void tampilkanIsiKomunitas() {
@@ -65,4 +64,5 @@ public class ForumKomunitas {
     boolean getNamaKomunitas() {
         throw new UnsupportedOperationException("Not supported yet."); 
     }
+    
 }

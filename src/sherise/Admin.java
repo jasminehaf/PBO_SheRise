@@ -9,8 +9,8 @@ package sherise;
  * @author Lenovo
  */
 public class Admin extends User {
-    public Admin(String username, String email, String password, String phoneNumber) {
-        super(username, email, password, phoneNumber, true);
+    public Admin(String username, String email, String password, String phoneNumber, String status) {
+        super(username, email, password, phoneNumber, status);
     }
 
     public void manageUsers() {
@@ -36,4 +36,18 @@ public class Admin extends User {
     public void hapusLaporan(User pelapor, String jenisLaporan) {
         System.out.println("Laporan dari " + pelapor.getUsername() + " telah dihapus - Jenis: " + jenisLaporan);
     }
+    
+
+    public void membuatKomunitas(String namaKomunitas, String deskripsiKomunitas, String kategoriKomunitas) {
+        // Implementasi untuk membuat komunitas
+        ForumKomunitas komunitas = new ForumKomunitas(namaKomunitas, deskripsiKomunitas, kategoriKomunitas, getUsername());
+        // Simpan komunitas ke daftar komunitas (jika Anda memiliki daftar komunitas)
+        // DaftarKomunitas.add(komunitas);
+
+        System.out.println("Komunitas " + namaKomunitas + " berhasil dibuat oleh " + getUsername());
+    }
+    
+    // yang belum: unggahlowongan, hapus lowongan, 
+     
 }
+

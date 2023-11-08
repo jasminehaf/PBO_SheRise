@@ -20,7 +20,7 @@ class KontenEdukasi {
     private List<String> komentar;
     
     // Konstruktor
-    public KontenEdukasi(String judulKonten) {
+    public KontenEdukasi(String judulKonten, String pengirimKonten1) {
         this.judulKonten = judulKonten;
         this.jenisKonten = jenisKonten;
         this.pengirimKonten = pengirimKonten;

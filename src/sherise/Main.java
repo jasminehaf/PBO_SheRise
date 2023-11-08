@@ -72,7 +72,7 @@ public class Main {
                             String password = scanner.nextLine();
                             System.out.print("Nomor Telepon: ");
                             String phoneNumber = scanner.nextLine();
-                            User newUser = new User(username, email, password, phoneNumber,false);
+                            User newUser = new User(username, email, password, phoneNumber, status);
                             users.add(newUser);
                             System.out.println("User " + username + " telah ditambahkan.");
                             loggedInUser = users.get(users.size() - 1);
@@ -196,14 +196,14 @@ public class Main {
                     case 2:
                         System.out.print("Nama Komunitas: ");
                         String komunitasName = scanner.nextLine();
-                        ForumKomunitas newKomunitas = new ForumKomunitas(komunitasName);
+                        ForumKomunitas newKomunitas = new ForumKomunitas(komunitasName, deskripsiKomunitas, kategoriKomunitas, getUsername());
                         komunitasList.add(newKomunitas);
                         System.out.println("Komunitas " + komunitasName + " telah ditambahkan.");
                         break;
                     case 3:
                         System.out.print("Judul Konten Edukasi: ");
                         String judulKonten = scanner.nextLine();
-                        KontenEdukasi newKonten = new KontenEdukasi(judulKonten);
+                        KontenEdukasi newKonten = new KontenEdukasi(judulKonten, pengirimKonten);
                         kontenList.add(newKonten);
                         System.out.println("Konten " + judulKonten + " telah ditambahkan.");
                         break;
