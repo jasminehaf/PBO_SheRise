@@ -34,29 +34,29 @@ public class PelaporanPelecehan {
         this.penerimaPemberitahuan = new ArrayList<>();
     }
 
-    // Metode Buat Laporan
-public void buatLaporan(String jenisPelecehan, String deskripsiKejadian, String penggunaPelapor, Date tanggalLaporan) {
+    // Metode Buat Laporan (masih ragu) member
+public PelaporanPelecehan buatLaporan(String jenisPelecehan, String deskripsiKejadian, String penggunaPelapor, Date tanggalLaporan) {
     PelaporanPelecehan laporan = new PelaporanPelecehan(jenisPelecehan, deskripsiKejadian, penggunaPelapor, new Date());
     laporan.setStatusPelaporan("Diterima");
     System.out.println("Laporan pelecehan telah dibuat dan disimpan.");
-    return buatLaporan;
+    return laporan;
 }
 
 
-    // Metode Tinjau Laporan
+    // Metode Tinjau Laporan 
     public void tinjauLaporan(String status) {
         this.statusPelaporan = status;
         
     }
 
-    // Metode Kirim Pemberitahuan Laporan
+    // Metode Kirim Pemberitahuan Laporan member
     public void kirimPemberitahuanLaporan(String pesan) {
         penerimaPemberitahuan.add(pesan);
        
     }
 
-    // Metode Tanggapi Permintaan Bantuan
- public void tanggapiPermintaanBantuan(String status) {
+    // Metode Tanggapi Permintaan Bantuan 
+    public void tanggapiPermintaanBantuan(String status) {
     System.out.println("Tanggapan atas permintaan bantuan: " + status);
 }
     // Metode Tambah Bukti
